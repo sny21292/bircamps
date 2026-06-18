@@ -9,8 +9,12 @@ HOST="${BIRCAMPS_HOST:-ubuntu@54.221.154.169}"
 cd "$(dirname "$0")"
 
 echo "→ packaging source…"
-tar --exclude='./node_modules' --exclude='./.next' --exclude='./.git' \
-    --exclude='./legacy' -czf /tmp/bircamps-deploy.tgz .
+# COPYFILE_DISABLE stops macOS tar from embedding AppleDouble (._*) resource forks,
+# which otherwise land on the server as broken duplicate files.
+COPYFILE_DISABLE=1 tar \
+    --exclude='./node_modules' --exclude='./.next' --exclude='./.git' \
+    --exclude='./legacy' --exclude='._*' --exclude='.DS_Store' \
+    -czf /tmp/bircamps-deploy.tgz .
 
 echo "→ uploading to ${HOST}…"
 scp -i "$PEM" /tmp/bircamps-deploy.tgz "${HOST}":/home/ubuntu/

@@ -20,8 +20,10 @@ export default function GalleryPage() {
     files = [];
   }
 
-  const images = files.filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).sort();
-  const videos = files.filter((f) => /\.(mp4|webm)$/i.test(f)).sort();
+  // ignore dotfiles (e.g. macOS ._AppleDouble / .DS_Store) so the count stays correct
+  const real = files.filter((f) => !f.startsWith("."));
+  const images = real.filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).sort();
+  const videos = real.filter((f) => /\.(mp4|webm)$/i.test(f)).sort();
 
   const media: MediaItem[] = images.map((f) => ({
     type: "image",
