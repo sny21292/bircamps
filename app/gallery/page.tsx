@@ -23,7 +23,11 @@ export default function GalleryPage() {
   const images = files.filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).sort();
   const videos = files.filter((f) => /\.(mp4|webm)$/i.test(f)).sort();
 
-  const media: MediaItem[] = images.map((f) => ({ type: "image", src: `/gallery/${f}` }));
+  const media: MediaItem[] = images.map((f) => ({
+    type: "image",
+    src: `/gallery/${f}`,
+    thumb: `/gallery/thumbs/${f.replace(/\.(jpe?g|png|webp)$/i, ".jpg")}`,
+  }));
   const vids: MediaItem[] = videos.map((f) => ({ type: "video", src: `/gallery/${f}` }));
   // sprinkle the videos through the grid for rhythm
   if (vids[0]) media.splice(2, 0, vids[0]);

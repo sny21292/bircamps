@@ -76,7 +76,9 @@
 .fly,
 .quotes,
 .exp__item,
-.gframe {
+.gframe,
+.cta-box,
+.media-soon {
   --bg:        #0d1210;
   --bg-2:      #121a17;
   --bg-3:      #16201c;
@@ -98,6 +100,10 @@
 /* the ".light" ghost button used dark-only white borders — use tokens instead */
 .btn--ghost.light { border-color: var(--line); color: var(--ink); }
 .btn--ghost.light:hover { border-color: var(--ink); }
+
+/* "Newly opened" tag: base .card__tag (amber text) was defined AFTER the --new
+   rule, hiding its text on the amber fill. Higher specificity restores it. */
+.card__tag.card__tag--new { color: #1c1408; background: var(--amber); border-color: var(--amber); }
 
 /* mobile menu big links inherit theme ink */
 .mobile-menu a { color: var(--ink); }

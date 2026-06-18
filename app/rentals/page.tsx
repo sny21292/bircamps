@@ -24,7 +24,7 @@ export default function RentalsPage() {
       />
 
       <section className="wrap">
-        <div className="cards" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+        <div className="cards cards--duo">
           {RENTALS.map((r, i) => (
             <Reveal as="article" className="card" key={r.slug} delay={i * 0.1}>
               <div className="card__media" style={{ position: "relative" }}>

@@ -54,7 +54,11 @@ export default async function CampDetail({ params }: { params: Promise<{ slug: s
         <Link href="/stay" className="backlink">← All stays</Link>
         <div className="detail">
           <Reveal className="detail__media">
-            <Image src={camp.image} alt={`${camp.name} at Bir Camps, Bir Billing`} fill sizes="(max-width: 900px) 100vw, 55vw" style={{ objectFit: "cover" }} priority />
+            {camp.image ? (
+              <Image src={camp.image} alt={`${camp.name} at Bir Camps, Bir Billing`} fill sizes="(max-width: 900px) 100vw, 55vw" style={{ objectFit: "cover" }} priority />
+            ) : (
+              <div className="media-soon"><span>Photos coming soon</span></div>
+            )}
           </Reveal>
           <Reveal delay={0.1} className="detail__body">
             <h2>{camp.name}</h2>

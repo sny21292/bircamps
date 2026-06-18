@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 
-export type MediaItem = { type: "image" | "video"; src: string };
+export type MediaItem = { type: "image" | "video"; src: string; thumb?: string };
 
 export default function Gallery({ items }: { items: MediaItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -39,13 +38,9 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
             aria-label={it.type === "video" ? "Play video" : "View photo"}
           >
             {it.type === "image" ? (
-              <Image
-                src={it.src}
-                alt={`Bir Camps — photo ${i + 1}`}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                style={{ objectFit: "cover" }}
-              />
+              // static thumbnails — no runtime optimizer, reliable on a small server
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={it.thumb || it.src} alt={`Bir Camps — photo ${i + 1}`} loading="lazy" decoding="async" />
             ) : (
               <>
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption */}

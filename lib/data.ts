@@ -19,7 +19,8 @@ export const CAMPS: Camp[] = [
     price: null,
     priceNote: "Ask us on WhatsApp",
     tag: "Newly opened",
-    image: "/photos/open-cottage.jpg",
+    image: "", // owner will supply a new photo; placeholder shown until then
+
     blurb:
       "Our newest way to stay — a solid wooden cabin that opens straight onto the valley, with a private deck where the mountains are the only thing between you and the sky.",
     description:
