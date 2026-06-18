@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./ui.css";
 import "./theme.css";
+import "./gallery.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Glider from "@/components/Glider";

@@ -30,6 +30,7 @@ export const NAV = [
   { label: "Fly", href: "/fly" },
   { label: "Rentals", href: "/rentals" },
   { label: "Experiences", href: "/experiences" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Journal", href: "/blog" },
   { label: "Visit", href: "/contact" },
 ];

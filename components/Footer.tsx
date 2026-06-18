@@ -19,6 +19,7 @@ export default function Footer() {
           <Link href="/fly">Paragliding</Link>
           <Link href="/rentals">Rentals</Link>
           <Link href="/experiences">Experiences</Link>
+          <Link href="/gallery">Gallery</Link>
           <Link href="/blog">Journal</Link>
         </div>
         <div>
