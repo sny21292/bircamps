@@ -1,0 +1,119 @@
+/* ============================================================
+   LOGO, THEME TOGGLE & LIGHT/DARK THEMING
+   Loaded after globals.css + ui.css so it can override.
+   ============================================================ */
+
+/* ---------- logo ---------- */
+.nav__brand { display: flex; align-items: center; gap: 0.6rem; }
+.nav__logo { width: 38px; height: 38px; display: block; }
+.footer__brand { display: inline-flex; align-items: center; gap: 0.65rem; }
+.footer__logo { width: 46px; height: 46px; display: block; }
+
+/* ---------- nav actions cluster ---------- */
+.nav__actions { display: flex; align-items: center; gap: 0.9rem; }
+
+/* ---------- theme toggle ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(127, 127, 127, 0.06);
+  color: var(--ink-soft); cursor: pointer; transition: all 0.4s var(--ease);
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink); transform: translateY(-2px); }
+.theme-toggle .ti { width: 18px; height: 18px; }
+.theme-toggle .ti--moon { display: none; }
+[data-theme="light"] .theme-toggle .ti--sun { display: none; }
+[data-theme="light"] .theme-toggle .ti--moon { display: block; }
+
+.theme-toggle--compact {
+  width: auto; height: auto; border-radius: 100px; padding: 0.7rem 1.3rem; gap: 0.6rem;
+  font-family: var(--font-d); font-size: 1.05rem; margin-top: 0.4rem;
+}
+.mm-phone { color: var(--ink-dim); font-size: 0.9rem; }
+
+/* ============================================================
+   LIGHT THEME — "Himalayan dawn"
+   ============================================================ */
+:root { --nav-frost: rgba(13, 18, 16, 0.72); --menu-bg: rgba(13, 18, 16, 0.97); }
+
+[data-theme="light"] {
+  --bg:        #f3eee3;   /* warm parchment */
+  --bg-2:      #eae2d3;
+  --bg-3:      #fbf8f1;   /* cards */
+  --ink:       #181310;   /* espresso */
+  --ink-soft:  #564d42;
+  --ink-dim:   #8a7f70;
+  --line:      rgba(24, 19, 16, 0.16);
+  --line-soft: rgba(24, 19, 16, 0.09);
+  --amber:     #bd7a33;   /* deeper so it reads on light */
+  --amber-2:   #9c5d22;
+  --teal:      #3c7a6e;
+  --nav-frost: rgba(244, 239, 230, 0.82);
+  --menu-bg:   rgba(243, 238, 227, 0.98);
+}
+
+/* nav text follows its (possibly forced) tokens so the brand re-resolves correctly */
+.nav { color: var(--ink); }
+/* nav frost + mobile menu now follow the theme */
+.nav.scrolled { background: var(--nav-frost); }
+.mobile-menu { background: var(--menu-bg); }
+
+/* nav at the very top sits over the always-dark hero/pagehead — force light chrome */
+.nav:not(.scrolled) {
+  --ink: #eef2ec;
+  --ink-soft: #d2dad3;
+  --ink-dim: #aab4ac;
+  --line: rgba(238, 242, 236, 0.18);
+}
+
+/* ============================================================
+   DARK "ISLANDS" — sections that stay cinematic in BOTH themes.
+   Re-declare the full token set locally so descendants render
+   light-on-dark regardless of the active theme.
+   ============================================================ */
+.hero,
+.pagehead,
+.fly,
+.quotes,
+.exp__item,
+.gframe {
+  --bg:        #0d1210;
+  --bg-2:      #121a17;
+  --bg-3:      #16201c;
+  --ink:       #eef2ec;
+  --ink-soft:  #aeb8b0;
+  --ink-dim:   #6f7a72;
+  --line:      rgba(238, 242, 236, 0.12);
+  --line-soft: rgba(238, 242, 236, 0.07);
+  --amber:     #e6a15a;
+  --amber-2:   #f2c389;
+  --teal:      #6fb6a7;
+  /* set color explicitly so inherited text (headings) re-resolves to the dark-island ink */
+  color: var(--ink);
+}
+
+/* ============================================================
+   THEME-AWARE FIXES for elements that assumed a dark bg
+   ============================================================ */
+/* the ".light" ghost button used dark-only white borders — use tokens instead */
+.btn--ghost.light { border-color: var(--line); color: var(--ink); }
+.btn--ghost.light:hover { border-color: var(--ink); }
+
+/* mobile menu big links inherit theme ink */
+.mobile-menu a { color: var(--ink); }
+
+/* the paraglider floats over both light and dark areas — keep it amber-dominant
+   (visible on parchment and on the dark hero) with its drop-shadow for separation */
+.glider-global .canopy { fill: var(--amber); }
+.glider-global .line { stroke: var(--amber); opacity: 0.7; }
+.glider-global .pilot { fill: var(--amber); }
+
+/* soften the heavy grain on the light theme */
+[data-theme="light"] .grain { opacity: 0.03; mix-blend-mode: multiply; }
+
+/* in light mode, give photo cards/tiles a hair more separation */
+[data-theme="light"] .card,
+[data-theme="light"] .flycard,
+[data-theme="light"] .postcard,
+[data-theme="light"] .act,
+[data-theme="light"] .visit__card { box-shadow: 0 14px 40px -28px rgba(40, 30, 16, 0.35); }

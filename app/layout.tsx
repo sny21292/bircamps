@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./ui.css";
+import "./theme.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Glider from "@/components/Glider";
@@ -44,7 +45,9 @@ export const metadata: Metadata = {
     images: ["/photos/paragliding-bir-billing.webp"],
   },
   icons: {
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1210'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%23e6a15a'%3E%E2%96%B2%3C/text%3E%3C/svg%3E",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+    apple: "/logo-mark.svg",
   },
 };
 
@@ -82,8 +85,14 @@ const businessLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t='dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();",
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

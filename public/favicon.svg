@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Bir Camps">
+  <defs>
+    <linearGradient id="fSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22353b"/>
+      <stop offset="1" stop-color="#0f1d17"/>
+    </linearGradient>
+    <radialGradient id="fSun" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#ffe9c2"/>
+      <stop offset=".5" stop-color="#f2c389"/>
+      <stop offset="1" stop-color="#e6a15a"/>
+    </radialGradient>
+    <clipPath id="fDisc"><circle cx="50" cy="50" r="46"/></clipPath>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="url(#fSky)"/>
+  <g clip-path="url(#fDisc)">
+    <!-- bold sun, reads at 16px -->
+    <circle cx="50" cy="46" r="22" fill="url(#fSun)"/>
+    <!-- single strong ridgeline -->
+    <path d="M-2 70 C18 58 34 70 52 64 C70 58 84 72 102 64 L102 101 L-2 101Z" fill="#0c1410"/>
+  </g>
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#e6a15a" stroke-width="3"/>
+</svg>

@@ -6,7 +6,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__top">
         <Link href="/" className="footer__brand">
-          <span className="nav__mark">▲</span> Bir Camps
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-mark.svg" className="footer__logo" alt="" width={44} height={44} />
+          <span>Bir Camps</span>
         </Link>
         <p className="footer__tag">Riverside camping &amp; paragliding in the Himalayas.</p>
       </div>
