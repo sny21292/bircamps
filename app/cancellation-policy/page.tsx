@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CancellationPolicy() {
   return (
     <>
-      <PageHead index="Good to know" crumb="Cancellation policy" title={<>Cancellation policy</>} />
+      <PageHead index="Good to know" crumb="Cancellation policy" path="/cancellation-policy" title={<>Cancellation policy</>} />
       <article className="prose">
         <p className="lead">We know plans change. Here&apos;s how cancellations and refunds work for stays and flights at Bir Camps.</p>
 

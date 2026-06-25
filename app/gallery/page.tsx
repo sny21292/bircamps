@@ -7,8 +7,10 @@ import Gallery, { type MediaItem } from "@/components/Gallery";
 export const metadata: Metadata = {
   title: "Gallery — Photos & Videos of Bir Camps",
   description:
-    "A full gallery of Bir Camps in Bir Billing — tents and the open cottage, the riverside, bonfires, paragliding and valley views. Real photos and videos of the camp.",
+    "Photos and videos of Bir Camps in Bir Billing — tents, the open cottage, riverside, bonfires, paragliding and valley views. See the camp before you book.",
+  keywords: ["Bir Camps photos", "Bir Billing camping photos", "Bir Billing gallery", "camp photos Himachal Pradesh", "paragliding photos Bir Billing"],
   alternates: { canonical: "/gallery" },
+  openGraph: { images: [{ url: "/photos/Bir-Camp.webp" }] },
 };
 
 export default function GalleryPage() {
@@ -29,6 +31,7 @@ export default function GalleryPage() {
     type: "image",
     src: `/gallery/${f}`,
     thumb: `/gallery/thumbs/${f.replace(/\.(jpe?g|png|webp)$/i, ".jpg")}`,
+    alt: f.replace(/[-_]/g, " ").replace(/\.\w+$/, "").replace(/\b\w/g, (c) => c.toUpperCase()) + " — Bir Camps, Bir Billing",
   }));
   const vids: MediaItem[] = videos.map((f) => ({ type: "video", src: `/gallery/${f}` }));
   // sprinkle the videos through the grid for rhythm
@@ -41,6 +44,7 @@ export default function GalleryPage() {
       <PageHead
         index="The Gallery"
         crumb="Gallery"
+        path="/gallery"
         title={<>Every corner of <em>the camp.</em></>}
         lead={`${images.length} photos and ${videos.length} videos from the camp — the tents and cottage, the riverside, bonfire nights, paragliding and the valley waking up. Tap any frame to view it full-screen.`}
       />

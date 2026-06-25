@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-export type MediaItem = { type: "image" | "video"; src: string; thumb?: string };
+export type MediaItem = { type: "image" | "video"; src: string; thumb?: string; alt?: string };
 
 export default function Gallery({ items }: { items: MediaItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -40,7 +40,7 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
             {it.type === "image" ? (
               // static thumbnails — no runtime optimizer, reliable on a small server
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={it.thumb || it.src} alt={`Bir Camps — photo ${i + 1}`} loading="lazy" decoding="async" />
+              <img src={it.thumb || it.src} alt={it.alt || `Bir Camps — photo ${i + 1}`} loading="lazy" decoding="async" />
             ) : (
               <>
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
@@ -63,7 +63,7 @@ export default function Gallery({ items }: { items: MediaItem[] }) {
           <div className="lightbox__stage" onClick={(e) => e.stopPropagation()}>
             {items[open].type === "image" ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={items[open].src} alt="Bir Camps" />
+              <img src={items[open].src} alt={items[open].alt || "Bir Camps gallery"} />
             ) : (
               // eslint-disable-next-line jsx-a11y/media-has-caption
               <video src={items[open].src} controls autoPlay playsInline />

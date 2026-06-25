@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHead from "@/components/PageHead";
 import Reveal from "@/components/Reveal";
 import BookCTA from "@/components/BookCTA";
@@ -7,8 +8,10 @@ import { EXPERIENCES } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Experiences & Activities in Bir Billing",
   description:
-    "Bonfire nights, riverside walks, the Himalayan café, paragliding, the Rajgundha valley trek, waterfalls and Tibetan monasteries — all the things to do around Bir Camps in Bir Billing.",
+    "Bonfire nights, riverside walks, paragliding, the Rajgundha valley trek, waterfalls and monasteries — things to do around Bir Camps in Bir Billing.",
+  keywords: ["things to do in Bir Billing", "Bir Billing activities", "bonfire camping Bir", "Rajgundha valley trek", "waterfall in Bir Billing", "Tibetan monastery Bir"],
   alternates: { canonical: "/experiences" },
+  openGraph: { images: [{ url: "/photos/Bir-Billing-Camping.webp" }] },
 };
 
 const ACTIVITIES = [
@@ -28,6 +31,7 @@ export default function ExperiencesPage() {
       <PageHead
         index="The Days"
         crumb="Experiences"
+        path="/experiences"
         title={<>More than a place <em>to sleep.</em></>}
         lead="A night with us is only the start. From bonfires and river walks to paragliding, treks and monastery visits, here's what fills the days around Bir Camps."
       />
@@ -62,6 +66,10 @@ export default function ExperiencesPage() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      <section className="wrap" style={{ paddingTop: 0 }}>
+        <Reveal><p style={{ color: "var(--ink-soft)", fontSize: "1.02rem" }}>Read more: <Link href="/blog/rajgundha-valley-in-bir-billing" style={{ color: "var(--amber)" }}>Rajgundha valley trek guide</Link> · <Link href="/blog/waterfall-in-bir-billing" style={{ color: "var(--amber)" }}>Gunehar &amp; Bangoru waterfalls</Link> · <Link href="/blog/bir-billing-paragliding" style={{ color: "var(--amber)" }}>Paragliding first-timer&apos;s guide</Link></p></Reveal>
       </section>
 
       <BookCTA title="Make a weekend of it" text="We'll help you line up flights, treks and rides around your stay." message="Hi Bir Camps, I'd like help planning activities for my stay." />

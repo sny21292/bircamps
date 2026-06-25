@@ -9,7 +9,9 @@ export const metadata: Metadata = {
   title: "The Journal — Guides to Bir Billing",
   description:
     "Guides and stories from Bir Billing: paragliding tips, camping advice, the Rajgundha valley trek, waterfalls and how to plan the perfect Himalayan weekend.",
+  keywords: ["Bir Billing guide", "Bir Billing blog", "camping tips Bir Billing", "paragliding guide Bir Billing", "Bir Billing travel guide"],
   alternates: { canonical: "/blog" },
+  openGraph: { images: [{ url: "/photos/Bir-Billing-Camping.webp" }] },
 };
 
 function fmt(date: string) {
@@ -17,12 +19,15 @@ function fmt(date: string) {
 }
 
 export default function BlogIndex() {
-  const [feat, ...rest] = POSTS;
+  const sorted = [...POSTS].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const [feat, ...rest] = sorted;
+
   return (
     <>
       <PageHead
         index="The Journal"
         crumb="Journal"
+        path="/blog"
         title={<>Notes from <em>the valley.</em></>}
         lead="Practical guides and quiet stories from Bir Billing — written to help you plan a better trip and see more of the mountains."
       />

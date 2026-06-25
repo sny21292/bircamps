@@ -9,8 +9,10 @@ import { whatsapp } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Scooty & Bike Rentals in Bir Billing",
   description:
-    "Rent a scooty or motorbike in Bir Billing to explore Billing, Rajgundha, Barot and the village cafés. Helmets included, easy daily rates — arrange it at Bir Camps.",
+    "Rent a scooty or motorbike in Bir Billing to explore Rajgundha, Barot and the village cafes. Helmets included, easy daily rates at Bir Camps.",
+  keywords: ["scooty on rent Bir", "bike rental Bir Billing", "motorbike rent Bir Billing", "scooty hire Bir", "explore Bir Billing by bike"],
   alternates: { canonical: "/rentals" },
+  openGraph: { images: [{ url: "/photos/Motorbike-For-Rent-Bir-Billing.jpg" }] },
 };
 
 export default function RentalsPage() {
@@ -19,6 +21,7 @@ export default function RentalsPage() {
       <PageHead
         index="On Two Wheels"
         crumb="Rentals"
+        path="/rentals"
         title={<>Explore the valley <em>your way.</em></>}
         lead="The best of Bir Billing is spread across mountain roads and hidden hamlets. Grab a scooty for café-hopping or a motorbike for the long ride to Rajgundha and Barot — helmets included."
       />

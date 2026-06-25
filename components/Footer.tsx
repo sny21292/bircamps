@@ -31,6 +31,7 @@ export default function Footer() {
         </div>
         <div>
           <h4>Good to know</h4>
+          <Link href="/faq">FAQ</Link>
           <Link href="/cancellation-policy">Cancellation policy</Link>
           <Link href="/dos-and-donts">Do&apos;s &amp; Don&apos;ts</Link>
           <Link href="/privacy-policy">Privacy policy</Link>

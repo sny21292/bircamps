@@ -81,7 +81,7 @@
 .lightbox__count {
   position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
   color: #cfd6d0; font-size: 0.82rem; letter-spacing: 0.14em;
-  font-family: var(--font-b);
+  font-family: var(--font-body);
 }
 
 @media (max-width: 640px) {
