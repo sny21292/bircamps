@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicy() {
   return (
     <>
-      <PageHead index="Good to know" crumb="Privacy policy" title={<>Privacy policy</>} />
+      <PageHead index="Good to know" crumb="Privacy policy" path="/privacy-policy" title={<>Privacy policy</>} />
       <article className="prose">
         <p className="lead">We keep this simple: we only collect what we need to take your booking and look after you, and we never sell your data.</p>
 

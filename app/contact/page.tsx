@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHead from "@/components/PageHead";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
@@ -7,8 +8,10 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact & Directions — Bir Camps, Bir Billing",
   description:
-    "Call or WhatsApp +91 89888 56055 to book Bir Camps. Find us in Gunehr village, 2 km from Bir bus stop, Himachal Pradesh 176077. Directions, season and check-in details.",
+    "Call or WhatsApp +91 89888 56055 to book Bir Camps. Gunehr village, 2 km from Bir bus stop, Himachal Pradesh 176077. Directions and check-in info.",
+  keywords: ["Bir Camps contact", "how to reach Bir Billing", "Bir Camps directions", "Bir Billing location", "book camping Bir Billing", "Gunehr village Bir"],
   alternates: { canonical: "/contact" },
+  openGraph: { images: [{ url: "/photos/Bir-Camp.webp" }] },
 };
 
 export default function ContactPage() {
@@ -17,6 +20,7 @@ export default function ContactPage() {
       <PageHead
         index="The Way Here"
         crumb="Contact"
+        path="/contact"
         title={<>Come up <em>the mountain.</em></>}
         lead="The fastest way to book is a quick WhatsApp. Send your dates and we'll take it from there."
       />
@@ -27,7 +31,7 @@ export default function ContactPage() {
             <p className="visit__addr" style={{ fontSize: "1.15rem", lineHeight: 1.7 }}>
               Bunhla Marhola, Gunehr Village<br />P.O. Bir, Teh. Baijnath<br />Distt. Kangra, Bir — 176077<br />Himachal Pradesh, India
             </p>
-            <p className="visit__hint" style={{ margin: "0.8rem 0 1.6rem" }}>Two kilometres from Bir bus stop. We&apos;ll help you find the turn.</p>
+            <p className="visit__hint" style={{ margin: "0.8rem 0 1.6rem" }}>Two kilometres from Bir bus stop. We&apos;ll help you find the turn. See our <Link href="/blog/how-to-reach-bir-billing" style={{ color: "var(--amber)" }}>complete guide on how to reach Bir Billing</Link>.</p>
 
             <div className="visit__contacts" style={{ margin: "0 0 1.6rem" }}>
               <a href={`tel:${SITE.phoneRaw}`} className="visit__contact"><span>Call / WhatsApp</span><b>{SITE.phone}</b></a>

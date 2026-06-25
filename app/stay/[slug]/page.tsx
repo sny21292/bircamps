@@ -16,10 +16,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const camp = campBySlug(slug);
   if (!camp) return {};
-  const priceTxt = camp.price ? `₹${camp.price.toLocaleString("en-IN")} per person` : "Price on request";
   return {
-    title: `${camp.name} — ${priceTxt}`,
-    description: `${camp.blurb} ${priceTxt}. Riverside camping in Bir Billing, Himachal Pradesh — book on WhatsApp.`,
+    title: `${camp.name} — Camping in Bir Billing`,
+    description: `${camp.blurb} Riverside camping in Bir Billing, Himachal Pradesh — book on WhatsApp.`,
     alternates: { canonical: `/stay/${camp.slug}` },
     openGraph: { title: `${camp.name} · Bir Camps`, description: camp.blurb, images: [{ url: camp.image }] },
   };
@@ -33,22 +32,30 @@ export default async function CampDetail({ params }: { params: Promise<{ slug: s
   const priceTxt = camp.price ? `₹${camp.price.toLocaleString("en-IN")}` : "On request";
   const others = CAMPS.filter((c) => c.slug !== camp.slug).slice(0, 3);
 
-  const productLd = {
+  const accommodationLd = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "LodgingBusiness",
     name: `${camp.name} — Bir Camps`,
     description: camp.description,
-    image: `${SITE.domain}${camp.image}`,
-    brand: { "@type": "Brand", name: "Bir Camps" },
+    image: camp.image ? `${SITE.domain}${camp.image}` : undefined,
+    url: `${SITE.domain}/stay/${camp.slug}`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Bunhla Marhola, Gunehr Village, P.O. Bir, Teh. Baijnath",
+      addressLocality: "Bir",
+      addressRegion: "Himachal Pradesh",
+      postalCode: "176077",
+      addressCountry: "IN",
+    },
     ...(camp.price
-      ? { offers: { "@type": "Offer", price: String(camp.price), priceCurrency: "INR", availability: "https://schema.org/InStock", url: `${SITE.domain}/stay/${camp.slug}` } }
+      ? { priceRange: `₹${camp.price}` }
       : {}),
   };
 
   return (
     <>
-      <JsonLd data={productLd} />
-      <PageHead index="The Stay" crumb={camp.name} title={<>{camp.name}</>} />
+      <JsonLd data={accommodationLd} />
+      <PageHead index="The Stay" crumb={camp.name} path={`/stay/${camp.slug}`} title={<>{camp.name}</>} />
 
       <section className="wrap" style={{ paddingTop: "clamp(2.5rem,6vh,4rem)" }}>
         <Link href="/stay" className="backlink">← All stays</Link>

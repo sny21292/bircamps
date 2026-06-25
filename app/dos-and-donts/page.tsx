@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function DosAndDonts() {
   return (
     <>
-      <PageHead index="Good to know" crumb="Do's & Don'ts" title={<>Do&apos;s &amp; Don&apos;ts</>} />
+      <PageHead index="Good to know" crumb="Do's & Don'ts" path="/dos-and-donts" title={<>Do&apos;s &amp; Don&apos;ts</>} />
       <article className="prose">
         <p className="lead">A camp in the mountains works best when everyone looks after it together. A few simple things to keep in mind during your stay.</p>
 

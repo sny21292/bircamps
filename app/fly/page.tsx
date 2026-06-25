@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import PageHead from "@/components/PageHead";
 import Reveal from "@/components/Reveal";
@@ -8,10 +9,12 @@ import { FLIGHTS } from "@/lib/data";
 import { SITE, whatsapp } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Paragliding in Bir Billing — Tandem Flights from ₹3,000",
+  title: "Paragliding in Bir Billing — Tandem Flights",
   description:
-    "Tandem paragliding in Bir Billing, the highest take-off in India (8,000 ft). Classic flight (15–20 min) ₹3,000 and Prime flight (40–50 min) ₹4,500 with certified pilots. No experience needed.",
+    "Tandem paragliding in Bir Billing from the highest take-off in India (8,000 ft). Certified pilots, no experience needed. Book your flight at Bir Camps.",
+  keywords: ["paragliding in Bir Billing", "tandem paragliding India", "best paragliding site India", "Billing take off", "Bir Billing paragliding", "paragliding near Dharamshala"],
   alternates: { canonical: "/fly" },
+  openGraph: { images: [{ url: "/photos/paragliding-bir-billing.webp" }] },
 };
 
 const productLd = {
@@ -31,6 +34,7 @@ export default function FlyPage() {
       <PageHead
         index="The Sky"
         crumb="Paragliding"
+        path="/fly"
         title={<>Billing is where the world comes <em>to fly.</em></>}
         lead="Bir Billing holds the highest paragliding take-off in India and one of the best in the world. Strap in with a certified pilot — no experience needed — and let the Dhauladhar thermals carry you over green ridgelines and the village below."
       />
@@ -68,6 +72,10 @@ export default function FlyPage() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      <section className="wrap" style={{ paddingTop: 0 }}>
+        <Reveal><p style={{ color: "var(--ink-soft)", fontSize: "1.02rem" }}>New to paragliding? Read our <Link href="/blog/bir-billing-paragliding" style={{ color: "var(--amber)" }}>first-timer&apos;s guide</Link>. Planning your dates? Check the <Link href="/blog/best-time-to-visit-bir-billing" style={{ color: "var(--amber)" }}>best time to visit Bir Billing</Link>.</p></Reveal>
       </section>
 
       <BookCTA title="Book your flight" text="Message us your dates and number of flyers — we'll confirm pilots and timing." message="Hi Bir Camps, I'd like to book paragliding in Bir Billing." />

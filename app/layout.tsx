@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import "./ui.css";
 import "./theme.css";
@@ -10,10 +11,25 @@ import ScrollProgress from "@/components/ScrollProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-d",
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-b",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.domain),
   title: {
-    default: "Bir Camps — Camping & Paragliding in Bir Billing, Himachal Pradesh",
+    default: "Bir Camps — Camping & Paragliding in Bir Billing",
     template: "%s · Bir Camps",
   },
   description: SITE.description,
@@ -82,23 +98,29 @@ const businessLd = {
   ].map((n) => ({ "@type": "LocationFeatureSpecification", name: n, value: true })),
   aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "320" },
   sameAs: [SITE.instagram],
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  hasMap: SITE.maps,
+  areaServed: [
+    { "@type": "Place", name: "Bir Billing, Himachal Pradesh" },
+    { "@type": "Place", name: "Kangra Valley" },
+  ],
+  keywords: "camping in Bir Billing, paragliding in Bir Billing, glamping Himachal Pradesh, riverside camping near Dharamshala",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${fraunces.variable} ${hanken.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html:
               "(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t='dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();",
           }}
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
         />
       </head>
       <body>

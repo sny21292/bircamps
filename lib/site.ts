@@ -3,7 +3,7 @@ export const SITE = {
   domain: "https://bircamps.com",
   tagline: "Riverside camping & paragliding in Bir Billing, Himalayas",
   description:
-    "Book riverside camping and tandem paragliding in Bir Billing, Himachal Pradesh. Swiss tents, bell tents, dome camps & dormitory from ₹850. Bonfire nights, Himalayan café & the highest paragliding take-off in India.",
+    "Book riverside camping and paragliding in Bir Billing, Himachal Pradesh. Swiss tents, bell tents & dome camps from ₹850. Bonfire nights beneath the Dhauladhars.",
   phone: "+91 89888 56055",
   phoneRaw: "918988856055",
   email: "bircamps@gmail.com",
@@ -26,11 +26,13 @@ export function whatsapp(message?: string) {
 }
 
 export const NAV = [
+  { label: "About", href: "/about" },
   { label: "Stay", href: "/stay" },
   { label: "Fly", href: "/fly" },
   { label: "Rentals", href: "/rentals" },
   { label: "Experiences", href: "/experiences" },
   { label: "Gallery", href: "/gallery" },
   { label: "Journal", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
   { label: "Visit", href: "/contact" },
 ];

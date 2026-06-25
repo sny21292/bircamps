@@ -7,8 +7,10 @@ import BookCTA from "@/components/BookCTA";
 export const metadata: Metadata = {
   title: "About Bir Camps — Our Story",
   description:
-    "Bir Camps is a family-run riverside camp in Gunehr village, Bir Billing. We've spent years sharing the quiet, generous side of the Himalayas with travellers from around the world.",
+    "Bir Camps is a family-run riverside camp in Gunehr village, Bir Billing. We share the quiet, generous side of the Himalayas with travellers worldwide.",
+  keywords: ["Bir Camps", "about Bir Camps", "family-run camp Bir Billing", "riverside camp Himachal Pradesh", "camping near Dharamshala", "Kangra valley camping"],
   alternates: { canonical: "/about" },
+  openGraph: { images: [{ url: "/photos/bir-camps-valley-view.jpg" }] },
 };
 
 export default function AboutPage() {
@@ -17,6 +19,7 @@ export default function AboutPage() {
       <PageHead
         index="The People"
         crumb="About"
+        path="/about"
         title={<>A camp built on <em>hospitality.</em></>}
         lead="We're a family-run camp in a quiet fold of the Bir valley. What started as a few tents by the river has grown into a place travellers from all over the world come back to — for the view, the fire, and the welcome."
       />
@@ -24,11 +27,11 @@ export default function AboutPage() {
       <section className="wrap">
         <div className="detail" style={{ marginBottom: "3rem" }}>
           <Reveal className="detail__media">
-            <Image src="/photos/DSC06362-1-scaled-1.jpg" alt="Bir Camps in the Bir Billing valley" fill sizes="(max-width: 900px) 100vw, 55vw" style={{ objectFit: "cover" }} priority />
+            <Image src="/photos/bir-camps-valley-view.jpg" alt="Bir Camps in the Bir Billing valley" fill sizes="(max-width: 900px) 100vw, 55vw" style={{ objectFit: "cover" }} priority />
           </Reveal>
           <Reveal delay={0.1} className="detail__body">
             <h2>The slow side of the Himalayas</h2>
-            <p>Our camp sits in Gunehr village, two kilometres from Bir, surrounded by lush green mountains with a cold mountain river a five-minute walk away. We chose this spot for one reason: the view, and the quiet that comes with it.</p>
+            <p>Our camp sits in Gunehr village, two kilometres from Bir and about 70 km from Dharamshala in the Kangra valley, Himachal Pradesh. Surrounded by lush green mountains with a cold mountain river a five-minute walk away, we chose this spot for one reason: the view, and the quiet that comes with it.</p>
             <p>Over the years we&apos;ve added tents, a café and a new wooden cottage — but the heart of the place hasn&apos;t changed. It&apos;s still about clean, comfortable stays, honest food, a fire every night, and staff who treat guests like family.</p>
             <p>Whether you&apos;re here to fly, to trek, or simply to switch off, we&apos;ll make sure you leave with a story worth telling.</p>
           </Reveal>
